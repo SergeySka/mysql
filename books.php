@@ -6,13 +6,13 @@ $name = "%";
 $isbn = "%";
 $author = "%";
 if (isset($_POST['name'])) {
-	$name = $_POST['name']."%";
+	$name .= $_POST['name']."%";
 }
 if (isset($_POST['isbn'])) {
-	$isbn = $_POST['isbn']."%";
+	$isbn .= $_POST['isbn']."%";
 }
 if (isset($_POST['author'])) {
-	$author = $_POST['author']."%";
+	$author .= $_POST['author']."%";
 }
 $pdo = new PDO("mysql:host=localhost;dbname=global; charset=utf8", "soleinikov", "neto1895");
 $sql = "SELECT * FROM books WHERE name like :name AND isbn like :isbn AND author like :author";
@@ -21,7 +21,7 @@ $stmt->execute(["name"=>$name,"isbn"=>$isbn,"author"=>$author]);
 $books = $stmt->fetchAll(PDO::FETCH_ASSOC);
  ?>
 <!doctype html>
- <html lang="en">
+ <html lang="ru">
  <head>
  	<meta charset="UTF-8">
  	<title>books</title>
